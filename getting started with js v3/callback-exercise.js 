@@ -1,0 +1,14 @@
+function  createFullName  (firstName,lastName,callback){
+  let fullName = firstName+lastName;
+  callback (fullName);
+
+}
+
+
+function helloName(fullName){
+ console.log("HELLO ",fullName)
+
+
+}
+
+createFullName("ohn","doe",helloName)
