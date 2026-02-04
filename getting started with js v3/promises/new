@@ -1,0 +1,25 @@
+return requests.reduce((assignments, { agent_id }) => {
+  // Find the agent in the agents list
+  const agent = agents.find(a => a.id === agent_id);
+
+  // If not found, skip
+  if (!agent) return assignments;
+
+  // Look for a job that matches their skills
+  const match = jobs.find(j =>
+    [agent.primary_skillset[0], agent.secondary_skillset[0]].includes(j.type)
+  );
+
+  // If no job, skip
+  if (!match) return assignments;
+
+  // If found, remove that job (so it’s not reused)
+  jobs.splice(jobs.indexOf(match), 1);
+
+  // Add the assignment
+  return [...assignments, {
+    job_assigned: { job_id: match.id, agent_id }
+  }];
+
+  // Start with empty list
+}, []);

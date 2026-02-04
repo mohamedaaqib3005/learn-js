@@ -10,5 +10,6 @@ function x(y) {
 }
 
 x(function y() {
+  l
   console.log("y");
 });
