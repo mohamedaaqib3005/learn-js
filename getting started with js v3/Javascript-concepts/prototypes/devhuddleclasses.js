@@ -31,13 +31,13 @@ class Porsche extends Car {
 
 function carFactory(color, model) {
   let speed = 0;
+  carFactory.carCount += 1;
+
+
   return {
     accelerate: function (targetSpeed) {
-      this.speed += targetSpeed
-      console.log("speed", speed);
-    },
-    getSpeed: function () {
-      return speed;
+      this.speed += targetSpeed;
+
     },
     color: color,
     model: model,
@@ -46,40 +46,44 @@ function carFactory(color, model) {
 
 
 }
+carFactory.carCount = 0;
+carFactory.countCars = function countCars() {
+  return this.carCount;
+}
 
 
+function porscheFactory(color) {
+  return Object.create(carFactory(color, "porsche"))
 
+}
+
+Object.setPrototypeOf(porscheFactory, carFactory);
 
 
 
 
 const gar = new Car("yellow", "lamborghini")
 gar.accelerate(16)
-gar["accelerate"](16)
-const acc = gar.accelerate
-// acc(16);
-console.log(Car.countCars())
-console.log(gar)
+console.log("gar", gar)
 
 
 const par = new Porsche("red")
-console.log(par)
-console.log(Car.countCars())
+console.log("par", par)
+console.log("carCounts", Porsche.countCars())
+console.log(par.hasOwnProperty("model"))
 
 
 const batMobile = carFactory("black", "tank")
-// batMobile.accelerate(54)
-batMobile.accelerate(6)
-const bacc = batMobile.accelerate
-bacc(34)
-gar.bacc = bacc
-gar.bacc(45)
-console.log("gar", gar);
-// batMobile["accelerate"](56)
 
-// console.log(carFactory.countCars())
+batMobile.accelerate(6);
+console.log("countCars", carFactory.countCars())
 console.log("batMobile", batMobile)
-console.log("getSpeed", batMobile.getSpeed())
+
+const nineEleven = porscheFactory("red")
+nineEleven.accelerate(911)
+console.log("nineEleven", nineEleven)
+console.log("carCounts", porscheFactory.countCars())
+console.log(nineEleven.hasOwnProperty("model"))
 
 
 
