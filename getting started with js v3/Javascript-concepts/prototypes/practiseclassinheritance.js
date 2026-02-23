@@ -97,12 +97,21 @@ const lamboCar = new Lamborghini("black", "Aventador", 360, 6300, "trackmode");
 console.log(ferrariCar);
 console.log(lamboCar);
 
-function test(description, expected, actual) {
-  if (expected === actual) {
-    console.log(`PASS: ${description}`);
+function test(expected, fn, ...args) {
+  const result = fn(...args);
+  if (result === expected) {
+    console.log("PASS");
   } else {
-    console.log(`FAIL: ${description}`);
-    console.log(`   Expected: ${expected}`);
-    console.log(`   Received: ${actual}`);
+    console.log("FAIL");
+    console.log("Expected:", expected);
+    console.log("Received:", result);
   }
 }
+function countcaars() {
+  return "2";
+}
+
+test(0, (car) => car.speed, ferrariCar);
+test(0, (car) => { car.brake; return car.speed }, ferrariCar);
+test(100, (car, targetSpeed) => { car.accelerate(targetSpeed); return car.speed; }, ferrariCar, 100);
+test(2, () => { return Car.countCars() })
