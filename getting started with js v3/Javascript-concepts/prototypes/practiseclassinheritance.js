@@ -114,4 +114,4 @@ function countcaars() {
 test(0, (car) => car.speed, ferrariCar);
 test(0, (car) => { car.brake; return car.speed }, ferrariCar);
 test(100, (car, targetSpeed) => { car.accelerate(targetSpeed); return car.speed; }, ferrariCar, 100);
-test(2, () => { return Car.countCars() })
+test(2, () => { return Car.countCars() });

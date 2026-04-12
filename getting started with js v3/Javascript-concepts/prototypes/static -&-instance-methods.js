@@ -49,7 +49,7 @@
 // console.log(object)
 
 
-function Car { }
+function Car() { }
 Car.prototype.drive = function () {
   console.log("drive")
 }
