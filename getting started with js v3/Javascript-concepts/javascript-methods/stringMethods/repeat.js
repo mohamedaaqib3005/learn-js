@@ -139,3 +139,14 @@ triangularPattern()
 // line is logged for each i
 // Next moves to  i= 2
 // and so on
+
+
+// While Loop
+// while the condition is truthy run the loop
+const print5no = () => {
+  let i = 0;
+  while (i < 5) {
+    console.log(i)
+  }
+}
+print5no()
