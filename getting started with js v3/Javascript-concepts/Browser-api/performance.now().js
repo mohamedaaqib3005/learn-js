@@ -7,7 +7,7 @@ console.log(performance.now())//23.059635
 // performance.now() = 0 is the moment the old page is finally gone and the browser begins the "travel" to the new page.
 const t1 = performance.now()
 const t2 = performance.now()
-console.log(t2 - t1)//0.0009569999999996526 here it means difference in execution time
+console.log(t2 - t1)//0.0009569999999996526  It shows that it took about 956 nanoseconds to move from the first line to the second line. here it means difference in execution time
 // MDN performance.now():
 
 //     The performance.now() method returns a high resolution timestamp in milliseconds.It represents the time elapsed since Performance.timeOrigin

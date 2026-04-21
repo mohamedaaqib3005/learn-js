@@ -1,22 +1,27 @@
-
+"use strict"
 // using classes
-let instance = null;
-class singleton {
+class Singleton {
+  static #instance = null;
   constructor() {
-    if (instance) {
-      return instance;
+    if (Singleton.#instance) {
+      return Singleton.#instance;
     }
     this.count = 10;
-    instance = this;
+    Singleton.#instance = this;
   }
 
 }
 
-const obj1 = new singleton()
+// console.log("instance", Singleton.#instance)//cannot access
+
+const obj1 = new Singleton()
 console.log("obj1", obj1)
-const obj2 = new singleton()
+const obj2 = new Singleton()
 console.log("obj2", obj2)
 obj1.count = 50;
 console.log("obj1", obj1)//{ count: 50 }
 console.log("obj2", obj2)//{ count: 50 }
 console.log(obj1 === obj2)// true
+
+// Learnings :
+// Always have variables inside the class

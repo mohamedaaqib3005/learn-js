@@ -8,6 +8,7 @@ const createObject = () => {
 }
 
 
+
 console.log("createObject()", createObject())//{ count: 10 }
 
 const obj1 = createObject()//{ count: 10 }
