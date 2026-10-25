@@ -1,0 +1,16 @@
+// Understnding the usecase of jquery
+
+
+<button id="myButton" Click me </ button>
+  <p id="message">Orginal text</p>
+
+
+
+  const button = document.getElementById("myButton");
+  const message = document.getElementById("message");
+
+button.addEventListener('click',()=>{
+    message.textContent = "Hello,Aaqib"});
+
+
+  As an application grows it gets harder to write code in vanilla js
