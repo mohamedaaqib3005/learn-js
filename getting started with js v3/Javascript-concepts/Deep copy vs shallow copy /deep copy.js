@@ -36,8 +36,46 @@ function makeDeepCopy(input) {
   for (let i = 0; i < keys.length; i++) {
     deepCopy[keys[i]] = makeDeepCopy(input[keys[i]]);
   }
-
-
-
   return deepCopy;
 }
+
+
+function makeDeepCopy(input) {
+  // edgecases take care of input if it is not object and null
+  if (typeof input !== "object" || input === null) {
+    return input;
+  }
+  // create an empty array or object
+  let deepCopy = Array.isArray(input) ? [] : {};
+  // create an array with keys
+  let keys = Object.keys(input)
+  // loop through the keys
+  for (let i = 0; i < keys.length; i++) {
+    // create a new key value pair in empty deepcopy and call the same function to get the value of key
+    deepCopy[keys[i]] = makeDeepCopy(input[keys[i]]);
+  }
+  return deepCopy;
+}
+
+const obj = {};
+obj.self = obj;
+
+makeDeepCopy(obj);
+// this will break the code
+
+// The function behaves like this:
+// 1. Receives obj.
+// 2. Finds the self property.
+// 3. input.self points to obj again.
+// 4. Calls makeDeepCopy(obj) again.
+// 5. Finds self again.
+// 6. Calls itself again...
+// This continues until JavaScript throws a Maximum call stack size exceeded error.
+
+// This is called a circular reference.
+
+const obj = {};
+
+obj.self = obj;
+
+console.log(obj.self === obj); // TRUE
